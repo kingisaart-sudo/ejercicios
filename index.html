@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1 - jQuery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    .controls__btn {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .boxes {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .boxes__box {
+      width: 100px;
+      height: 100px;
+      background: #e67e22;
+      transition: all 0.3s ease;
+    }
+
+    .boxes__box--alt {
+      background: #2ecc71 !important;
+    }
+
+    .boxes__box--rounded {
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejercicio 1: Mejorando la Interacción con jQuery</h1>
+  <div class="controls">
+    <button class="controls__btn" id="toggleColors">Toggle Colors</button>
+    <button class="controls__btn" id="toggleBorders">Toggle Rounded Borders</button>
+    <button class="controls__btn" id="addBox">Add a new box</button>
+  </div>
+
+  <div class="boxes" id="boxes">
+    <div class="boxes__box"></div>
+    <div class="boxes__box"></div>
+    <div class="boxes__box"></div>
+  </div>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#toggleColors").click(function(){
+        $(".boxes__box").toggleClass("boxes__box--alt");
+      });
+
+      $("#toggleBorders").click(function(){
+        $(".boxes__box").toggleClass("boxes__box--rounded");
+      });
+
+      $("#addBox").click(function(){
+        $("#boxes").append('<div class="boxes__box"></div>');
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2 - Vanilla JS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    .controls__btn {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      background: #8e44ad;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .boxes {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .boxes__box {
+      width: 100px;
+      height: 100px;
+      background: #f39c12;
+      transition: all 0.3s ease;
+    }
+
+    .boxes__box--alt {
+      background: #1abc9c !important;
+    }
+
+    .boxes__box--rounded {
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejercicio 2: Mejorando la Interacción con Vanilla JS</h1>
+  <div class="controls">
+    <button class="controls__btn" id="toggleColors">Toggle Colors</button>
+    <button class="controls__btn" id="toggleBorders">Toggle Rounded Borders</button>
+    <button class="controls__btn" id="addBox">Add a new box</button>
+  </div>
+
+  <div class="boxes" id="boxes">
+    <div class="boxes__box"></div>
+    <div class="boxes__box"></div>
+    <div class="boxes__box"></div>
+  </div>
+
+  <script>
+    const toggleColors = document.getElementById("toggleColors");
+    const toggleBorders = document.getElementById("toggleBorders");
+    const addBox = document.getElementById("addBox");
+    const boxes = document.getElementById("boxes");
+
+    toggleColors.addEventListener("click", () => {
+      document.querySelectorAll(".boxes__box").forEach(box => {
+        box.classList.toggle("boxes__box--alt");
+      });
+    });
+
+    toggleBorders.addEventListener("click", () => {
+      document.querySelectorAll(".boxes__box").forEach(box => {
+        box.classList.toggle("boxes__box--rounded");
+      });
+    });
+
+    addBox.addEventListener("click", () => {
+      const newBox = document.createElement("div");
+      newBox.classList.add("boxes__box");
+      boxes.appendChild(newBox);
+    });
+  </script>
+</body>
+</html>
